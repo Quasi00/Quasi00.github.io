@@ -1,0 +1,255 @@
+[view]{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+[gameworld]{
+    background-image: var(--background-texture);
+    background-size: 30px;
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
+}
+[spawnarea]{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+[spawnarea] > div{
+    position: absolute;
+    background-size: 100%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+[coal]{
+    background-image: var(--coal-texture);
+}
+[wood]{
+    background-image: var(--tree-texture);
+}
+[beef]{
+    background-image: var(--beef-texture);
+}
+[sawmill]{
+    background-image: var(--sawmill-texture);
+}
+[stone]{
+    background-image: var(--stone-texture);
+}
+[quarry]{
+    background-image: var(--quarry-texture);
+}
+[crafting]{
+    background-image: var(--crafting-texture);
+}
+[entityInfo]{
+    width: 100px;
+    display: none;
+    position: absolute;
+    pointer-events: none;
+    background-color: rgb(45, 45, 45);
+    z-index: 999999999999;
+    transform: translate(12px, 10px);
+    padding: 10px;
+    color: white;
+}
+[entityInfo] > div{
+    width: 100%;
+    text-align: center;
+}
+[entityMaxHealthBar]{
+    width: 100%;
+    height: 16px;
+    border: 1px solid black;
+    margin-top: 3px;
+    background-color: lightgray;
+    position: relative;
+    color: black;
+    font-weight: bold;
+    z-index: 8;
+}
+[entityHealthBar]{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+    z-index: 9;
+}
+[entityHealth]{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+[cow]{
+    background-image: var(--cow-texture);
+    transition: z-index 30s, top 30s, left 30s;
+}
+[ghost]{
+    background-image: var(--ghost-texture);
+    transition: z-index 10s, top 10s, left 10s;
+    opacity: .5;
+}
+
+[player]{
+    width: 20px;
+    height: 30px;
+    background-image: url("../graphics/player/down.png");
+    background-size: 100% 100%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -100%);
+}
+[playerHealth]{
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 54px;
+    height: calc(51px * 5);
+    background-color: rgba(255, 0, 0, 0.469);
+    z-index: 999999999;
+    background-size: 100%;
+    background-position: bottom center;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+[playerHealth] > div{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999999;
+    background-image: url(../graphics/resource/heart.png);
+    background-size: 100%;
+    background-position: bottom center;
+}
+[heal]{
+    background-color: rgba(31, 31, 31, 0.863);
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    bottom: 102%;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    color: white;
+    transition: background-color .5s, color .5s;
+}
+[heal]:hover{
+    background-color: rgb(196, 196, 196);
+    color: black;
+}
+[viewArea]{
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 10px));
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(69, 68, 68, 0.566);
+    z-index: 99999999;
+}
+[viewArea]::backdrop{
+    pointer-events: all;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(69, 68, 68, 0.566);
+}
+
+[tutorial]{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 999999999;
+    background-image: url("../graphics/resource/stone.jpg");
+    background-size: 32px;
+}
+[tutorial] > img{
+    position: absolute;
+    height: 100vh;
+    max-height: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+[tutorial] > [tutnext]{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color: white;
+    background-color: rgba(69, 68, 68, 0.566);
+    padding: 5px;
+    border-radius: 10px;
+}
+[gameOver]{
+    color: white;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(13, 13, 13, 0.705);
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid black;
+}
+[gameOver] > *{
+    width: 100%;
+    text-align: center;
+}
+[gameOver] hr{
+    border: 1px solid white;
+    margin: 10px 0px;
+}
+[gameOver] > [resetButton]{
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    width: calc(100% - 60px);
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color .5s, color .5s;
+}
+[gameOver] > [resetButton]:hover{
+    background-color: rgb(196, 196, 196);
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+[holeBack]{
+    z-index: 9999;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+}

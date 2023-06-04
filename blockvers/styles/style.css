@@ -1,0 +1,207 @@
+:root{
+    --main-color: hsl(240 100% 70%);
+    --background-texture: url("../graphics/grass.png");
+    --coal-texture: url("../graphics/resource/coal.png");
+    --tree-texture: url("../graphics/resource/seed.png");
+    --wood-texture: url("../graphics/resource/wood.png");
+    --stone-texture: url("../graphics/resource/stone.png");
+    --hand-texture: url("../graphics/hand/hand.png");
+    --sawmill-texture: url("../graphics/resource/sawmill.gif");
+    --quarry-texture: url("../graphics/resource/quarry.gif");
+    --wooden-pickaxe-texture: url("../graphics/item/wooden_pickaxe.png");
+    --stone-pickaxe-texture: url("../graphics/item/stone_pickaxe.png");
+    --crafting-texture: url("../graphics/item/crafting.png");
+    --cow-texture: url("../graphics/entity/cow.png");
+    --ghost-texture: url("../graphics/entity/ghost.png");
+    --beef-texture: url("../graphics/resource/beef.png");
+
+    
+    --html-coal-texture: url("graphics/resource/coal.png");
+    --html-tree-texture: url("graphics/resource/seed.png");
+    --html-wood-texture: url("graphics/resource/wood.png");
+    --html-stone-texture: url("graphics/resource/stone.png");
+    --html-hand-texture: url("graphics/hand/hand.png");
+    --html-sawmill-texture: url("graphics/resource/sawmill.gif");
+    --html-quarry-texture: url("graphics/resource/quarry.gif");
+    --html-wooden-pickaxe-texture: url("graphics/item/wooden_pickaxe.png");
+    --html-stone-pickaxe-texture: url("graphics/item/stone_pickaxe.png");
+    --html-crafting-texture: url("graphics/item/crafting.png");
+    --html-cow-texture: url("graphics/entity/cow.png");
+    --html-ghost-texture: url("graphics/entity/ghost.png");
+    --html-beef-texture: url("graphics/resource/beef.png");
+}
+*:not([craftingDialog], [craftingDialog] *){
+    margin: 0;
+    padding: 0;
+    image-rendering: pixelated;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../graphics/resource/stone.jpg");
+    background-size: 32px;
+    position: relative;
+    filter: brightness(0.95);
+}
+*{
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+[hotBar]{
+    position: absolute;
+    display: flex;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    padding: 10px;
+    background-color: rgba(90, 90, 255, 0.493);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+}
+[hotBar] > span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: lightgray;
+    border: 3px solid gray;
+    margin-right: 5px;
+    cursor: pointer;
+    background-size: 100%;
+    position: relative;
+}
+[hotBar] > span:last-child{
+    margin-right: 0px;
+}
+[hotBar] span[active]{
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(253, 99, 99);
+    transform: scale(.9);
+    z-index: 100000;
+}
+
+[hotBar] > span > ul{
+    background-color: gray;
+    position: absolute;
+    bottom: 50px;
+    list-style: none;
+    display: none;
+}
+[hotBar] > span:hover > ul{
+    display: block;
+}
+[hotBar] li{
+    position: relative;
+    background-color: lightgray;
+    width: 45px;
+    height: 45px;
+    margin: 2px;
+    z-index: 999999;
+    background-size: 100% 100%;
+}
+[hotBar] li [info], [toolUpgrade] [info]{
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 3px;
+    width: 100px;
+    left: 45px;
+    bottom: 5px;
+    pointer-events: none;
+    display: none;
+}
+[hotBar] li:hover [info], [toolUpgrade]:hover [info]{
+    z-index: 1000000;
+    display: block;
+}
+[info] > [name], [info] > [materials]{
+    font-size: 12px;
+    display: block;
+    text-align: center;
+}
+[hotBar] [tree]{
+    background-image: var(--tree-texture);
+}
+[hotBar] [sawmill]{
+    background-image: var(--sawmill-texture);
+}
+[hotBar] [crafting]{
+    background-image: var(--crafting-texture);
+}
+
+[toolUpgrade]{
+    width: 30px;
+    height: 30px;
+    background-color: gold;
+    border-radius: 5px;
+    border: 1px solid black;
+    position: relative;
+    cursor: pointer;
+}
+[toolUpgrade]::after, [toolUpgrade]::before{
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-top: 4px solid black;
+    border-left: 4px solid black;
+    position: absolute;
+}
+[toolUpgrade]::after{
+    transform: translate(7px,7px) rotateZ(45deg);
+}
+[toolUpgrade]::before{
+    transform: translate(7px,16px) rotateZ(45deg);
+}
+
+[hotBar] [infoAbout]{
+    position: absolute;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    border-radius: 10px 10px 0px 0px;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 15px;
+    background-color: rgba(90, 90, 255, .9);
+    backdrop-filter: blur(50px);
+    z-index: 90000;
+}
+
+[craftingDialog]{
+    position: relative;
+    padding: 0;
+    width: 200px;
+    border: 1px solid black;
+}
+[dialogTitle]{
+    text-align: center;
+}
+[craft]{
+    background-color: rgba(172, 172, 172, 0.253);
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+}
+[craft]:hover{
+    background-color: rgba(172, 172, 172, 0.487);
+}
+[close]{
+    border: 0px solid;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+[close]:hover{
+    background-color: rgba(172, 172, 172, 0.487);
+}
+[close]:active{
+    border: 0px solid;
+}

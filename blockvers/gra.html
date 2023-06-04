@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/game.css" rel="stylesheet">
+    <link href="styles/items.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>RPG</title>
+</head>
+
+<body>
+    <div game>
+        <dialog craftingDialog>
+            <button close>X</button>
+            <h4 dialogTitle>Stół rzemieślniczy</h4>
+            <p craft woodc><img src="graphics/resource/wood.png" draggable="false"> x 10 = <img src="graphics/resource/plank.png" draggable="false"> x 1</p>
+        </dialog>
+        <div view>
+            <div gameworld>
+                <div spawnarea></div>
+            </div>
+            <div playerHealth><p heal>Heal</p><div></div></div>
+            <div entityInfo>
+                <div entityName>Entity Name</div>
+                <hr style="margin: 3px">
+                <div>Życie:</div>
+                <div entityMaxHealthBar><div entityHealthBar></div><span entityHealth>0 / 0</span></div>
+            </div>
+            <div time>
+                <div clock>
+                    <span hours>05</span>:<span minutes>00</span>
+                </div>
+                <div cicle>
+                    <img src="graphics/menu/sun.png" alt="sun">
+                    <img src="graphics/menu/moon.png" alt="moon">
+                </div>
+            </div>
+            <span score>0</span>
+            <div resourceCounter>
+                <span title="Wood">
+                    <img src="graphics/resource/wood.png" draggable="false"> x <span woodCounter>0</span>
+                </span>
+                <hr>
+                <span title="Plank">
+                    <img src="graphics/resource/plank.png" draggable="false"> x <span plankCounter>0</span>
+                </span>
+                <hr>
+                <span title="Stone">
+                    <img src="graphics/resource/stone.png" draggable="false"> x <span stoneCounter>0</span>
+                </span>
+                <hr>
+                <span title="Coal">
+                    <img src="graphics/resource/coal.png" draggable="false"> x <span coalCounter>0</span>
+                </span>
+                <hr>
+                <span title="Tree seed">
+                    <img src="graphics/resource/seed.png" draggable="false"> x <span seedCounter>0</span>
+                </span>
+                <hr>
+                <span title="Raw beef">
+                    <img src="graphics/resource/beef.png" draggable="false"> x <span beefCounter>0</span>
+                </span>
+            </div>
+            <div hotBar>
+                <i toolUpgrade>
+                    <div info>
+                        <span name>Ulepsz narzędzie</span>
+                        <hr>
+                        <span materials>
+                            Potrzebne materiały:
+                        </span>
+                    </div>
+                </i>
+                <span tool style="background-image: var(--html-hand-texture);" active></span>
+                <span item1 style="background-image: var(--html-tree-texture)">
+                    <ul>
+                        <li itemSelect1 quarry>
+                            <div info>
+                                <span name>Kamieniołom</span>
+                                <hr>
+                                <span materials>
+                                    Potrzebne materiały:
+                                    <img src="graphics/resource/wood.png"> x 100
+                                </span>
+                            </div>
+                        </li>
+                        <li itemSelect1 sawmill>
+                            <div info>
+                                <span name>Tartak</span>
+                                <hr>
+                                <span materials>
+                                    Potrzebne materiały:
+                                    <img src="graphics/resource/wood.png"> x 100
+                                    <br>
+                                    <img src="graphics/resource/seed.png"> x 10
+                                </span>
+                            </div>
+                        </li>
+                        <li itemSelect1 tree>
+                            <div info>
+                                <span name>Drzewo</span>
+                                <hr>
+                                <span materials>
+                                    Potrzebne materiały:
+                                    <img src="graphics/resource/seed.png"> x 1
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </span>
+                <span item2 style="background-image: var(--html-crafting-texture)">
+                    <ul>
+                        <li itemSelect2 crafting>
+                            <div info>
+                                <span name>Stół rzemieślniczy</span>
+                                <hr>
+                                <span materials>
+                                    Potrzebne materiały:
+                                    <img src="graphics/resource/wood.png"> x 100
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </span>
+                <span item3></span>
+                <span item4></span>
+                <span item5></span>
+                <div infoAbout>Przy pomocy dłoni możesz pozyskiwać drewno z drzew.</div>
+            </div>
+        </div>
+        <div player></div>
+        <div holeBack></div>
+    </div>
+    <div tutorial>
+        <img tut1 style="display: block" src='graphics/tutorial/s1.png' draggable="false">
+        <img tut2 style="display: none" src='graphics/tutorial/s2.png' draggable="false">
+        <img tut3 style="display: none" src='graphics/tutorial/s3.png' draggable="false">
+        <img tut4 style="display: none" src='graphics/tutorial/s4.png' draggable="false">
+        <img tut5 style="display: none" src='graphics/tutorial/s5.png' draggable="false">
+        <img tut6 style="display: none" src='graphics/tutorial/s6.png' draggable="false">
+        <img tut7 style="display: none" src='graphics/tutorial/s7.png' draggable="false">
+        <img tut8 style="display: none" src='graphics/tutorial/s8.png' draggable="false">
+        <img tut9 style="display: none" src='graphics/tutorial/s9.png' draggable="false">
+        <span tutNext>Naciśnij [spacje] aby kontynuować.</span>
+    </div>
+    <div gameOver>
+        <h1>GameOver</h1>
+        <hr>
+        <h2>Zostałeś zabity przez:</h2>
+        <img gotypeImg src="graphics/entity/ghost.png" draggable="false">
+        <h2 gotype>Ducha</h2>
+        <hr>
+        <h2>Punkty: <span goPoints></span></h2>
+        <div resetButton onclick="window.location.replace('index.html')">Restart</div>
+    </div>
+</body>
+<script src="scripts/worldgenerating.js"></script>
+<script src="scripts/script.js"></script>
+<script src="scripts/toolUpgrade.js"></script>
+<script>
+if(tutorial == 0){
+    $(document.querySelectorAll("[tutorial]")).remove();
+    //myAudio.play();
+}
+</script>
+</html>

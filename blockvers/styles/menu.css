@@ -1,0 +1,37 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+[menu]{
+    height: 80vh;
+    width: 80vh;
+    background-image: url("../graphics/grass.png");
+    position: relative;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+[logo]{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 60vh
+}
+[play1], [play2]{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    opacity: 1;
+    transition: opacity .5s;
+    cursor: pointer;
+}
+[play1]:hover{
+    opacity: 0;
+}
+[play1]:hover + [play2]{
+    opacity: 1;
+}

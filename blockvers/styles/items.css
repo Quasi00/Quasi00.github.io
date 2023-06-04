@@ -1,0 +1,81 @@
+[resourceCounter]{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 30px;
+    padding: 5px 10px;
+    background-color: rgba(135, 135, 135, 0.312);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+}
+[resourceCounter] > span{
+    cursor: help;
+}
+[resourceCounter] > span > img{
+    width: 20px;
+    border: 1px solid black;
+    background-color: white;
+    transform: translateY(5%) scale(1.3);
+}
+[score]{
+    position: absolute;
+    top: 0px;
+    right: 0;
+    font-size: 40px;
+    padding: 5px 10px;
+    background-color: rgba(135, 135, 135, 0.312);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+}
+[time]{
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    background-color: rgba(135, 135, 135, 0.312);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+[clock]{
+    font-size: 30px;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translate(-50%,-50%);
+}
+
+@keyframes cicleAnimation {
+    0%{
+        transform: rotate(0deg);
+    }62.5%{
+        transform: rotate(180deg);
+    }100%{
+        transform: rotate(360deg);
+    }
+}
+[cicle]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation-name: cicleAnimation;
+    animation-duration: 144s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+[cicle] > img{
+    position: absolute;
+    width: 40px;
+    top: 50%;
+}
+[cicle] > img:first-child{
+    right: 0;
+    transform: translate(45%,-50%)
+}
+[cicle] > img:last-child{
+    left: 0;
+    transform: translate(-45%,-50%)
+}
